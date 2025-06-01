@@ -20,13 +20,13 @@ var heroAtkUpdrateButton = document.getElementById("atk-upgrade-ui");
 var BossHabilitado = document.getElementById("Boss");
 var JavaliHabilitado= document.getElementById("Javali");
 var CaoHabilidado = document.getElementById("Cao");
-var ZombieHabilidado = document.getElementById("Zombie");
+var machadonteHabilidado = document.getElementById("Zombie");
 
 //tirando as fotos
 BossHabilitado.style.display = "none";
 JavaliHabilitado.style.display = "none";
 CaoHabilidado.style.display ="none";
-ZombieHabilidado.style.display ="none";
+machadonteHabilidado.style.display ="none";
 
 //tirando os botoes
 heroAtkUpdrateButton.style.display = "none";
@@ -233,19 +233,19 @@ function BOSS(){
 //ocultar os inimigos para aparecer somente depois de derrotar o primeiro 
 function InimigosOcultos(){
   JavaliHabilitado.style.display = "inline-block";
-  ZombieHabilidado.style.display = "inline-block";
+  machadonteHabilidado.style.display = "inline-block";
 }
 
-function zombieinimigo() {
+function machadonteinimigo() {
   var inimigoHP = 20;
   var inimigoATK = 8;
   var playerAtaque;
 
-  function mordidaLetal() {
-    var ocorreMordida = Math.random() <= 0.4;  // 40% de chance de ocorrer mordida
+  function machadadaLetal() {
+    var ocorreMachadada = Math.random() <= 0.4;  // 40% de chance de ocorrer machadada
 
-    if (ocorreMordida) {
-      alert(heroName + " Não conseguiu esquivar da mordida, você perde 1 de vida neste round");
+    if (ocorreMachadada) {
+      alert(heroName + " Não conseguiu esquivar da machadada do lenhador, você perde 1 de vida neste round");
       heroVida--;  // Decrementa a vida do herói
       UpdateHeroStatus();
     } else {
@@ -258,14 +258,14 @@ function zombieinimigo() {
   {
     var playerAtaque = numeroAleatorio(0, heroAtaque);
 
-    alert("O Zombie tem " + inimigoHP + " de vida");
+    alert("Machadonte tem " + inimigoHP + " de vida");
     
     alert("Ataque " + heroName + " causou " + playerAtaque + " de dano😎");
     inimigoHP -= playerAtaque;
-    alert("O Zombie possui " + inimigoHP + " de vida😳");
+    alert("O Machadonte possui " + inimigoHP + " de vida😳");
 
      // funçao da habilidade do inimigo
-  mordidaLetal();
+  machadadaLetal();
     // Caso o inimigo sobreviva
     if (inimigoHP > 0) {
       alert("Inimigo atacou com " + inimigoATK + " de dano🤕");
@@ -280,7 +280,7 @@ function zombieinimigo() {
     heroXp = 10 + 10;
     alert("Você recebeu " + heroXp + " pontos de XP⏫");
   } else {
-    alert("Você foi de base da virginia, americanas, de F, comes e bebes, drake e josh😪");
+    alert("Você perdeu a batalha e toda a floresta foi destruida. FIM DE JOGO.");
     recarregarAPagina();
   }
 
