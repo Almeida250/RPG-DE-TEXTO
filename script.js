@@ -1,3 +1,6 @@
+// Helper function to get elements by ID for cleaner code
+const getElement = (id) => document.getElementById(id);
+
 /* variaveis */
 // esse getelement pega o elemento html pelo id ai coloca o mesmo id la e aqui 
 var heroNomeInput = document.getElementById("nome-input");
@@ -29,10 +32,10 @@ ZombieHabilidado.style.display ="none";
 heroAtkUpdrateButton.style.display = "none";
 heroXpUpdrate.style.display = "none";
 // player variaveis
-var heroName;
-var heroVida;
-var heroAtaque;
-var heroXp;
+let heroName;
+let heroVida;
+let heroAtaque;
+let heroXp;
 
 //variaveis de sessoes
 var secPlayerMenu = document.getElementById("sectPlayerMenu");
@@ -97,7 +100,7 @@ function numeroAleatorio(min,max){
   
 }
 
-function caoinimigo(){
+function pragainimigo(){
   
   var inimigoHP  = 5;
   var inimigoATK = 1;
@@ -105,7 +108,7 @@ function caoinimigo(){
   
   if (heroAtaque >= 20 || heroVida >= 20){
     
-    alert("Você não pode mais lutar com o cão pois você ja esta muito forte, agora lute com os outros");
+    alert("Você não pode mais lutar com o Pestilantor pois você ja esta muito forte, agora lute com os outros");
       CaoHabilidado.style.display = "none";
   }
   else{
@@ -115,11 +118,11 @@ function caoinimigo(){
     {
        var playerAtaque = numeroAleatorio(0,heroAtaque);
       
-      alert("Cão tem " + inimigoHP + " de vida");
+      alert("Pestilantor tem " + inimigoHP + " de vida");
   
   alert("Ataque " + heroName + " causou " + playerAtaque + " de dano😎");
   inimigoHP -= playerAtaque;
-  alert("O cão possui " + inimigoHP + " de vida😳");
+  alert("Pestilantor possui " + inimigoHP + " de vida");
   
   // caso o inimigo sobreviva
   if (inimigoHP > 0){
@@ -138,7 +141,7 @@ function caoinimigo(){
         InimigosOcultos();
       }
       else{
-        alert("Você foi de base da virginia, americanas, de F, comes e bebes,drake e josh😪")
+        alert("Infelizmente, você perdeu a guerra")
         recarregarAPagina();
       }
   
