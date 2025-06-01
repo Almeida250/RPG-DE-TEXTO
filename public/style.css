@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Merriweather&family=Raleway&display=swap');
+
+
+body{
+  margin: 0;
+  padding: 0;
+  height: 97vh;
+  background-image: url('Img/Fundo.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  text-align: center;
+  font-family: Raleway, serif
+}
+
+h3{
+  text-align: right;
+}
+
+#text-menu{
+  padding-top: 10px;
+}
+
+.section {
+  background-color: #8FBC8F;
+  border: 4px double #556B2F;
+  margin: 10px;
+  padding-left: 5px;
+  
+  
+}
+
+td{
+  border: 2px solid #556B2F;
+}
+
+.sub-section{
+
+  border: 2px solid rgb(212, 18, 18);
+  padding: 10px;
+  margin: 2px;
+  display: inline-block;
+  margin-bottom: 10px;
+  
+
+}
+
+h2{
+  color: #b15b72;
+}
+
+
+h1,h2{
+  text-align: center;
+}
+
+input{
+  text-align: center;
+  margin-left: 100px;
+  margin: 1px;
+  width: 20%;
+  border-radius: 9px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.10);
+}
+
+button{
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #E3A6EF;
+  border: solid 2px;
+  transition-duration: 0.10s;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+table{
+  padding-bottom: 10px;
+  width: 90%;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.upt-btn{
+ padding: 4px;
+
+}
+
+.btn{
+    
+    margin-bottom: 10px;
+}
+
+p{
+  margin-top: 2px;
+}
+
+button:hover{
+  background-color: #B68BD9;
+}
+
+button:active{
+  background-color: #B99FF8;
+}
+
+img {
+  border-radius: 8px;
+  padding: 5px;
+  width: 180px;
+}
+
+
+.sub-javalis {
+    border-radius: 8px;
+  padding: 10px;
+   width: 190px;
+  padding-right:20px;
+}
+
+
+.sub-zombie {
+    border-radius: 8px;
+  padding: 10px;
+  width: 185px;
+}
+
+.sub-praga {
+  border-radius: 8px;
+  padding: 10px;
+  width: 180px;
+  padding-top:0px;
+  
+}
+
+.inimigo{
+  display:none;
+}
+
+.sub-javalis img{
+  height:159px;
+  width: 190px;
+}
+
+.sub-zombie img{
+  height:166px;
+  width:185px;
+}
+
+.boss{
+  border-radius: 8px;
+  padding-top: 8px; 
+    width: 290px;
+  padding-right:20px;
+
+}
+
+.boss img{
+  height:190px;
+  width:290px; 
+}
+.boss p{
+  text-align: center;
+}
+
+.icon{
+  width:80px;
+  height:80px;
+  border-radius: 20px;
+}
+
+footer {
+   position: fixed;
+   width: 100%;
+   color: black;
+   text-align: center;
+}
