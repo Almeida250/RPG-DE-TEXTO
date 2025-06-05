@@ -3,24 +3,24 @@ const getElement = (id) => document.getElementById(id);
 
 /* variaveis */
 // esse getelement pega o elemento html pelo id ai coloca o mesmo id la e aqui 
-var heroNomeInput = document.getElementById("nome-input");
-var heroVidaInput = document.getElementById("vida-input");
-var heroAtaqueInput = document.getElementById("ataque-input");
+let heroNomeInput = document.getElementById("nome-input");
+let heroVidaInput = document.getElementById("vida-input");
+let heroAtaqueInput = document.getElementById("ataque-input");
 
 
 //variavel status player 
-var heroNomeUI = document.getElementById("nome-ui");
-var heroVidaUI = document.getElementById("vida-ui");
-var heroAtaqueUI = document.getElementById("ataque-ui");
-var heroXpUI = document.getElementById("xp-ui");
-var heroXpUpdrate = document.getElementById("xp-updrate-ui");
-var heroAtkUpdrateButton = document.getElementById("atk-upgrade-ui");
+let heroNomeUI = document.getElementById("nome-ui");
+let heroVidaUI = document.getElementById("vida-ui");
+let heroAtaqueUI = document.getElementById("ataque-ui");
+let heroXpUI = document.getElementById("xp-ui");
+let heroXpUpdrate = document.getElementById("xp-updrate-ui");
+let heroAtkUpdrateButton = document.getElementById("atk-upgrade-ui");
 
 //varivais de inimigos
-var BossHabilitado = document.getElementById("Boss");
-var CarbonoxHabilitado = document.getElementById("Carbonox");
-var CaoHabilidado = document.getElementById("Praga");
-var machadonteHabilidado = document.getElementById("Lenhador");
+let BossHabilitado = document.getElementById("Boss");
+let CarbonoxHabilitado = document.getElementById("Carbonox");
+let CaoHabilidado = document.getElementById("Praga");
+let machadonteHabilidado = document.getElementById("Lenhador");
 
 //tirando as fotos
 BossHabilitado.style.display = "none";
@@ -38,7 +38,7 @@ let heroAtaque;
 let heroXp;
 
 //variaveis de sessoes
-var secPlayerMenu = document.getElementById("sectPlayerMenu");
+let secPlayerMenu = document.getElementById("sectPlayerMenu");
 
 
 function CreateHero() {
@@ -85,14 +85,23 @@ function UpdateHeroStatus() {
   }
 }
 
-function numeroAleatorio(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+//ataque do hero
+function numeroAleatorio(min, max, heroAtaque) {
+  let minGarantido = min;
+
+  if(heroAtaque >= 10) {  
+    const bonusMinimo = Math.floor((heroAtaque - 10) / 10) * 2;
+    minGarantido = Math.min(min + bonusMinimo, max - 1);
+  }
+  minGarantido = Math.max(min, Math.min(minGarantido, max - 1));
+
+  return Math.floor(Math.random() * (max - minGarantido)) + minGarantido;
 }
 
 function pragainimigo() {
   let inimigoHP = 5;
   let inimigoATK = 1;
-  var playerAtaque;
+  let playerAtaque;
 
   if (heroAtaque >= 20 || heroVida >= 20) {
     alert("Você não pode mais lutar com o Pestilantor pois você ja esta muito forte, agora lute com os outros");
@@ -103,7 +112,7 @@ function pragainimigo() {
     do // enquanto..
 
     {
-      var playerAtaque = numeroAleatorio(0, heroAtaque);
+      playerAtaque = numeroAleatorio(0, heroAtaque);
 
       alert(`Pestilantor tem ${inimigoHP} de vida`);
 
@@ -128,7 +137,7 @@ function pragainimigo() {
       InimigosOcultos();
     }
     else {
-      alert("Infelizmente, você perdeu a guerra")
+      alert("Você perdeu a batalha e toda a floresta foi destruida. FIM DE JOGO.")
       recarregarAPagina();
     }
 
@@ -139,44 +148,48 @@ function pragainimigo() {
 
 function carbonoxsInimigo() {
 
-  var inimigoHP = 15;
-  var inimigoATK = 8;
-  var playerAtaque;
+  let inimigoHP = 15;
+  let inimigoATK = 8;
+  let playerAtaque;
 
 
-  //ciclo para os inimigos
-  do // enquanto..
+  if (heroAtaque >= 40 || heroVida >= 40) {
+    alert("Você não pode mais lutar contra Carbonox pois você ja esta muito forte, lute contra outros Inimigos");
+    CarbonoxHabilitado.style.display = "none";
+  } else {
+    do // enquanto..
 
-  {
-    var playerAtaque = numeroAleatorio(0, heroAtaque);
+    {
+      let playerAtaque = numeroAleatorio(0, heroAtaque);
 
-    alert(`O Carbonox tem ${inimigoHP} de vida`);
+      alert(`O Carbonox tem ${inimigoHP} de vida`);
 
-    alert(`Ataque de ${heroName} causou ${playerAtaque} de dano😎`);
-    inimigoHP -= playerAtaque;
-    alert("O Carbonox possui " + inimigoHP + " de vida😳");
+      alert(`Ataque de ${heroName} causou ${playerAtaque} de dano😎`);
+      inimigoHP -= playerAtaque;
+      alert(`O Carbonox possui ${inimigoHP} de vida😳`);
 
-    // caso o inimigo sobreviva
-    if (inimigoHP > 0) {
-      alert("Inimigo atacou com " + inimigoATK + " de dano🤕");
-      heroVida -= inimigoATK;
-      alert(`${heroName} possui ${heroVida} de vida💖`);
+      // caso o inimigo sobreviva
+      if (inimigoHP > 0) {
+        alert("Inimigo atacou com " + inimigoATK + " de dano🤕");
+        heroVida -= inimigoATK;
+        alert(`${heroName} possui ${heroVida} de vida💖`);
+      }
     }
-  }
-  while (inimigoHP > 0 && heroVida > 0) // verifica se o heroi morreu
+    while (inimigoHP > 0 && heroVida > 0) // verifica se o heroi morreu
 
-  if (heroVida > 0) {
-    alert("Você sobreviveu ao inimigo🥳");
-    heroXp = heroXp + 8;
-    alert(`Você recebeu ${heroXp} pontos de XP⏫`);
+    if (heroVida > 0) {
+      alert("Você sobreviveu ao inimigo🥳");
+      heroXp = heroXp + 8;
+      alert(`Você recebeu ${heroXp} pontos de XP⏫`);
 
-  }
-  else {
-    alert("Você perdeu a batalha e toda a floresta foi destruida. FIM DE JOGO.")
-    recarregarAPagina();
-  }
+    }
+    else {
+      alert("Você perdeu a batalha e toda a floresta foi destruida. FIM DE JOGO.")
+      recarregarAPagina();
+    }
 
-  UpdateHeroStatus();
+    UpdateHeroStatus();
+  }
 
 }
 
@@ -222,12 +235,12 @@ function InimigosOcultos() {
 }
 
 function machadonteinimigo() {
-  var inimigoHP = 20;
-  var inimigoATK = 8;
-  var playerAtaque;
+  let inimigoHP = 20;
+  let inimigoATK = 8;
+  let playerAtaque;
 
   function machadadaLetal() {
-    var ocorreMachadada = Math.random() <= 0.4;  // 40% de chance de ocorrer machadada
+    let ocorreMachadada = Math.random() <= 0.4;  // 40% de chance de ocorrer machadada
 
     if (ocorreMachadada) {
       alert(`${heroName} Não conseguiu esquivar da machadada do lenhador, ${heroName} perde 1 de vida neste round`);
@@ -239,36 +252,41 @@ function machadonteinimigo() {
   }
 
   // Ciclo para os inimigos
-  do {
-    var playerAtaque = numeroAleatorio(0, heroAtaque);
-
-    alert(`Machadonte tem  ${inimigoHP} de vida`);
-
-    alert(`Ataque de ${heroName} causou ${playerAtaque} de dano😎`);
-    inimigoHP -= playerAtaque;
-    alert(`O Machadonte possui ${inimigoHP} de vida😳`);
-
-    // funçao da habilidade do inimigo
-    machadadaLetal();
-    // Caso o inimigo sobreviva
-    if (inimigoHP > 0) {
-      alert("Inimigo atacou com " + inimigoATK + " de dano🤕");
-      heroVida -= inimigoATK;
-      alert(`${heroName} possui ${heroVida} de vida💖`);
-    }
-  }
-  while (inimigoHP > 0 && heroVida > 0);  // Verifica se o herói morreu
-
-  if (heroVida > 0) {
-    alert("Você sobreviveu ao inimigo🥳");
-    heroXp =+ 16;
-    alert(`Você recebeu ${heroXp} pontos de XP⏫`);
+  if (heroAtaque >= 75 || heroVida >= 75) {
+    alert("Você não pode mais lutar contra Machadonte pois você ja esta muito forte, lute contra outros Inimigos");
+    machadonteHabilidado.style.display = "none";
   } else {
-    alert("Você perdeu a batalha e toda a floresta foi destruida. FIM DE JOGO.");
-    recarregarAPagina();
-  }
+    do {
+      let playerAtaque = numeroAleatorio(0, heroAtaque);
 
-  UpdateHeroStatus();
+      alert(`Machadonte tem  ${inimigoHP} de vida`);
+
+      alert(`Ataque de ${heroName} causou ${playerAtaque} de dano😎`);
+      inimigoHP -= playerAtaque;
+      alert(`O Machadonte possui ${inimigoHP} de vida😳`);
+
+      // funçao da habilidade do inimigo
+      machadadaLetal();
+      // Caso o inimigo sobreviva
+      if (inimigoHP > 0) {
+        alert("Inimigo atacou com " + inimigoATK + " de dano🤕");
+        heroVida -= inimigoATK;
+        alert(`${heroName} possui ${heroVida} de vida💖`);
+      }
+    }
+    while (inimigoHP > 0 && heroVida > 0);  // Verifica se o herói morreu
+
+    if (heroVida > 0) {
+      alert("Você sobreviveu ao inimigo🥳");
+      heroXp = + 16;
+      alert(`Você recebeu ${heroXp} pontos de XP⏫`);
+    } else {
+      alert("Você perdeu a batalha e toda a floresta foi destruida. FIM DE JOGO.");
+      recarregarAPagina();
+    }
+
+    UpdateHeroStatus();
+  }
 }
 
 function sorte() {
@@ -286,14 +304,13 @@ function sorte() {
   }
 }
 
-
 function CEOVortex() {
-  var inimigoHP = 60;
-  var inimigoATK = 10;
+  let inimigoHP = 60;
+  let inimigoATK = 10;
 
   function Prender() {
 
-    var prender = Math.random() <= 0.5;
+    let prender = Math.random() <= 0.5;
 
     if (prender) {
       alert(`${heroName} você foi atacado pelos tentáculos do inimigo, você ficará um round sem movimentos`);
@@ -331,7 +348,7 @@ function CEOVortex() {
 
   while (inimigoHP > 0 && heroVida > 0) {
 
-    var playerAtaque = numeroAleatorio(20, heroAtaque);
+    let playerAtaque = numeroAleatorio(20, heroAtaque);
 
     escolherAcaoAleatoria(); // Execute uma ação aleatória do inimigo a cada rodada
 
@@ -357,9 +374,9 @@ function CEOVortex() {
 
 // Função para derreter o rosto do jogador
 function Derreter() {
-  var derreterRosto = true;
+  let derreterRosto = true;
 
-  var heroAtaque1 = Math.random() <= 0.5;
+  let heroAtaque1 = Math.random() <= 0.5;
 
   if (derreterRosto) {
     alert(`${heroName} o inimigo está aproximando você perto do rosto dele. Ele está prestes a derreter uma parte do seu rosto. Você precisa tirar 20 de dano.`);
@@ -383,7 +400,7 @@ function Derreter() {
 // Função para dissolver o jogador
 function Disolver() {
 
-  var absorver = Math.random() <= 0.9;
+  let absorver = Math.random() <= 0.9;
 
   if (absorver) {
     alert("Junto com seus capangas, CEO Vortex te prende e prepara para um golpe poderoso que pode Você irá morrer, mas você tem a chance de mais um ataque");
@@ -392,3 +409,36 @@ function Disolver() {
   }
   UpdateHeroStatus();
 }
+
+function numeroAleatorio(min, max, heroAtaque) {
+  // Calcula o mínimo garantido baseado no ataque do herói
+  let minGarantido = min;
+  
+  if (heroAtaque >= 10) {
+    const bonusMinimo = Math.floor((heroAtaque - 10) / 10) * 2;
+    minGarantido = Math.min(min + bonusMinimo, max - 1);
+  }
+  
+  minGarantido = Math.max(min, Math.min(minGarantido, max - 1));
+  
+  const resultado = Math.floor(Math.random() * (max - minGarantido)) + minGarantido;
+  
+  console.log(`Heroi Ataque: ${heroAtaque} | Min: ${minGarantido} | Max: ${max} | Rolou: ${resultado}`);
+  
+  return resultado;
+}
+
+// Testando com diferentes valores de ataque
+console.log("--- Testes da função ---");
+numeroAleatorio(1, 10 + 1, 10);   // Ataque 10 (mínimo 1)
+numeroAleatorio(1, 15 + 1, 15);   // Ataque 15 (ainda mínimo 1)
+numeroAleatorio(1, 20 + 1, 20);   // Ataque 20 (mínimo 3)
+numeroAleatorio(1, 25 + 1, 25);   // Ataque 25 (ainda mínimo 3)
+numeroAleatorio(1, 30 + 1, 30);   // Ataque 30 (mínimo 5)
+numeroAleatorio(1, 50 + 1, 50);   // Ataque 50 (mínimo 9)
+
+// Teste com valor baixo (menor que 10)
+numeroAleatorio(1, 5 + 1, 5);     // Ataque 5 (mínimo permanece 1)
+
+// Teste com valor muito alto para ver o limite
+numeroAleatorio(1, 10 + 1, 100); // Máximo é 11, então o mínimo ajusta para não passar

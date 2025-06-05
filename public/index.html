@@ -1,94 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="style.css">
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="https://glitch.com/favicon.ico" />
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style_pt.css" />
-    <!-- import the webpage's javascript file -->
-    <script src="/script_pt.js" defer></script>
-  </head>
-  
-  <body>
-  
-    
-        <h1> Jogo RPG </h1>
-    
-    
-    <div class="section" id="sectPlayerMenu">   
+<head>
+  <link rel="stylesheet" href="style.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/Img/Icon.png" />
+  <!-- import the webpage's stylesheet -->
+  <link rel="stylesheet" href="/style_pt.css" />
+  <!-- import the webpage's javascript file -->
+  <script src="/script_pt.js" defer></script>
+</head>
+
+<body>
+
+
+  <h1> Jogo RPG </h1>
+
+
+  <div class="section" id="sectPlayerMenu">
     <h2> Menu do Player</h2>
     <input placeholder="Nome" id="nome-input">
     <input placeholder="Vida" id="vida-input">
     <input placeholder="Pontos de ataque" type="number" min="0" max="20" id="ataque-input">
     <p id="text-menu"> Você tem 20 pontos a ser separado entre ataque e vida</p>
     <button class="btn" onclick="CreateHero()">Crie o seu herói</button>
-      </div> <!-- Menu -->
-    
-    <div class="section">
-      <h2>Status do Player</h2>
-      
-      <table>
-        
-        <tr> <!--ROW (LINHA)1-->
-          <td>Nome</td>
-          <td>HP</td>
-          <td>ATK</td>
-          <td>EXP</td>
-        </tr>
-       
-        <tr><!--ROW 3-->
+  </div> <!-- Menu -->
+
+  <div class="section">
+    <h2>Status do Player</h2>
+
+    <table>
+
+      <tr> <!--ROW (LINHA)1-->
+        <td>Nome</td>
+        <td>HP</td>
+        <td>ATK</td>
+        <td>EXP</td>
+      </tr>
+
+      <tr><!--ROW 3-->
         <td id="nome-ui">X</td>
         <td>
           <label id="vida-ui">X</label>
           <button onclick="AddHP()" class="upt-btn" id="xp-updrate-ui">+</button>
-          </td>
+        </td>
         <td>
           <label id="ataque-ui">X</label>
-          <button onclick= "AddAtk()" class="upt-btn" id="atk-upgrade-ui">+</button>
+          <button onclick="AddAtk()" class="upt-btn" id="atk-upgrade-ui">+</button>
         </td>
-          
+
         <td id="xp-ui"> X</td>
-        </tr>
-        
-      </table>
-    </div> <!-- Status -->
-    
-    <div class="section"> <!-- Inimigos -->
-      <h2> Inimigos! </h2>
-      
-      <div class="sub-section sub-praga" id= "Praga">
-        <h4>Pestilantor</h4>
-        <p>Pestilantor espalha pragas devastadoras por onde passa, alimentando-se do caos e da destruição.</p>
-        <img class="sub-praga" src="Img/InimigoPraga.png"/>
-        <button onclick="pragainimigo()">Atacar Pestilantor</button>
-      </div>
-      
-      <div class="sub-section sub-Carbonoxs" id= "Carbonox">
-        <h4>Carbonox</h4>
-        <p>Carbonox surge das queimadas ilegais, transformando florestas exuberantes em desertos de cinzas.</p>
-        <img class="sub-Carbonoxs" src="Img/InimigoFogo.png"/>
-        <button id="button-praga" onclick="carbonoxsInimigo()">Atacar Carbonox</button>
-      </div>
-      
-      <div class="sub-section sub-lenhador" id="Lenhador">        
-        <h4>Machadonte</h4>
-        <p>Machadonte é um lenhador cruel que abate árvores sem remorso,olhando apenas para a ganância</p>
-        <img src="Img/InimigoLenhador.png" />
-        <button onclick="machadonteinimigo()">Atacar Machadonte</button>
-        </div>
-      
-      <div class="sub-section boss" id="Boss">
-        <h4>CEO Vortex</h4>
-        <p>CEO Vortex pode destruir florestas inteiras em questão de minutos... tome cuidado</p>
-        <img src="Img/InimigoBoss.png" />
-        <button onclick="CEOVortex()">Atacar CEO Vortex</button>
-        </div>    
+      </tr>
+
+    </table>
+  </div> <!-- Status -->
+
+  <div class="section"> <!-- Inimigos -->
+    <h2> Inimigos! </h2>
+
+    <div class="sub-section sub-praga" id="Praga">
+      <h4>Pestilantor</h4>
+      <p>Pestilantor espalha pragas devastadoras por onde passa, alimentando-se do caos e da destruição.</p>
+      <img class="sub-praga" src="Img/InimigoPraga.png" />
+      <button onclick="pragainimigo()">Atacar Pestilantor</button>
     </div>
-    
-    
-<script src="script.js"></script>
-  </body>
+
+    <div class="sub-section sub-Carbonoxs" id="Carbonox">
+      <h4>Carbonox</h4>
+      <p>Carbonox surge das queimadas ilegais, transformando florestas exuberantes em desertos de cinzas.</p>
+      <img class="sub-Carbonoxs" src="Img/InimigoFogo.png" />
+      <button id="button-praga" onclick="carbonoxsInimigo()">Atacar Carbonox</button>
+    </div>
+
+    <div class="sub-section sub-lenhador" id="Lenhador">
+      <h4>Machadonte</h4>
+      <p>Machadonte é um lenhador cruel que abate árvores sem remorso,olhando apenas para a ganância</p>
+      <img src="Img/InimigoLenhador.png" />
+      <button onclick="machadonteinimigo()">Atacar Machadonte</button>
+    </div>
+
+    <div class="sub-section boss" id="Boss">
+      <h4>CEO Vortex</h4>
+      <p>CEO Vortex pode destruir florestas inteiras em questão de minutos... tome cuidado</p>
+      <img src="Img/InimigoBoss.png" />
+      <button onclick="CEOVortex()">Atacar CEO Vortex</button>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+
 </html>
