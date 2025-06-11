@@ -19,13 +19,13 @@ let heroAtkUpdrateButton = document.getElementById("atk-upgrade-ui");
 //varivais de inimigos
 let BossHabilitado = document.getElementById("Boss");
 let CarbonoxHabilitado = document.getElementById("Carbonox");
-let CaoHabilidado = document.getElementById("Praga");
+let pragaHabilitado = document.getElementById("Praga");
 let machadonteHabilidado = document.getElementById("Lenhador");
 
 //tirando as fotos
 BossHabilitado.style.display = "none";
 CarbonoxHabilitado.style.display = "none";
-CaoHabilidado.style.display = "none";
+pragaHabilitado.style.display = "none";
 machadonteHabilidado.style.display = "none";
 
 //tirando os botoes
@@ -59,7 +59,7 @@ function CreateHero() {
 
     //fazendo o documento html (menu) sair como for bloqueado usando display 
     secPlayerMenu.style.display = "none";
-    CaoHabilidado.style.display = "inline-block";
+    pragaHabilitado.style.display = "inline-block";
   }
   else {
     alert("ERRO: Use seus pontos corretamente!");
@@ -105,14 +105,14 @@ function pragainimigo() {
 
   if (heroAtaque >= 20 || heroVida >= 20) {
     alert("Você não pode mais lutar com o Pestilantor pois você ja esta muito forte, agora lute com os outros");
-    CaoHabilidado.style.display = "none";
+    pragaHabilitado.style.display = "none";
   }
   else {
     //ciclo para os inimigos
     do // enquanto..
 
     {
-      playerAtaque = numeroAleatorio(0, heroAtaque);
+      playerAtaque = numeroAleatorio(1, heroAtaque);
 
       alert(`Pestilantor tem ${inimigoHP} de vida`);
 
@@ -149,7 +149,7 @@ function pragainimigo() {
 function carbonoxsInimigo() {
 
   let inimigoHP = 15;
-  let inimigoATK = 8;
+  let inimigoATK = 6;
   let playerAtaque;
 
 
@@ -278,7 +278,7 @@ function machadonteinimigo() {
 
     if (heroVida > 0) {
       alert("Você sobreviveu ao inimigo🥳");
-      heroXp = + 16;
+      heroXp = + 10;
       alert(`Você recebeu ${heroXp} pontos de XP⏫`);
     } else {
       alert("Você perdeu a batalha e toda a floresta foi destruida. FIM DE JOGO.");
